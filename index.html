@@ -3,14 +3,16 @@
 <title>Kids' Events Digest — Wed Sep 30 → Tue Oct 6, 2026 (ages under 7)</title>
 <style>
 :root{
---tab-active-bg:#1a7f37;--tab-active-fg:#fff;
+--tab-active-bg:#0a58ca;--tab-active-fg:#fff;
 --bg:#fff;--fg:#1c1c1e;--border:#e5e5ea;--pill:#f2f2f7;--link:#0a58ca;
 --st-bg:#e6f4ea;--st-fg:#146c2e;--st-bd:#1a7f37;
+--ac-bg:#fef6e7;--ac-fg:#92580a;--ac-bd:#d97706;
 }
 @media (prefers-color-scheme: dark){
 :root{--bg:#1c1c1e;--fg:#f2f2f7;--border:#3a3a3c;--pill:#2c2c2e;--link:#5aa9ff;
---tab-active-bg:#4cc38a;--tab-active-fg:#101010;
---st-bg:#0e3b21;--st-fg:#7ce3a8;--st-bd:#4cc38a;}
+--tab-active-bg:#5aa9ff;--tab-active-fg:#101010;
+--st-bg:#0e3b21;--st-fg:#7ce3a8;--st-bd:#4cc38a;
+--ac-bg:#3a2a10;--ac-fg:#f5c86e;--ac-bd:#d8a93b;}
 }
 body{font-family:-apple-system,system-ui,sans-serif;max-width:680px;margin:0 auto;padding:16px;color:var(--fg);line-height:1.55;background:var(--bg)}
 h1{font-size:1.35em}h2{font-size:1.1em;margin-top:1.2em;border-bottom:1px solid var(--border);padding-bottom:4px}
@@ -26,6 +28,7 @@ input[name^="dtab"]{display:none}
 .tlab{flex:0 0 auto;padding:7px 12px;border:1px solid var(--border);border-radius:999px;background:var(--pill);color:var(--fg);font-size:.85em;cursor:pointer;white-space:nowrap}
 .subbar .tlab{font-size:.78em;padding:5px 10px}
 .subbar .tlab.st{background:var(--st-bg);color:var(--st-fg);border-color:var(--st-bd);font-weight:700}
+.subbar .tlab.ac{background:var(--ac-bg);color:var(--ac-fg);border-color:var(--ac-bd);font-weight:700}
 details.about{margin:.8em 0;border:1px solid var(--border);border-radius:10px;padding:0 14px;font-size:.92em}
 details.about summary{cursor:pointer;padding:10px 0;font-weight:600;list-style:none}
 details.about summary::-webkit-details-marker{display:none}
@@ -290,7 +293,7 @@ ul.eve,ul.evl{display:none}
 <input type="radio" name="dtabs0s0" id="dtabs0s01">
 <div class="tabbar">
 <label class="tlab st" for="dtabs0s00">Storytimes</label>
-<label class="tlab" for="dtabs0s01">Activities</label>
+<label class="tlab ac" for="dtabs0s01">Activities</label>
 </div>
 <div class="panes">
 <section class="pane p0dtabs0s0"><ul class="evn">
@@ -519,7 +522,7 @@ ul.eve,ul.evl{display:none}
 <input type="radio" name="dtabs0s1" id="dtabs0s11">
 <div class="tabbar">
 <label class="tlab st" for="dtabs0s10">Storytimes</label>
-<label class="tlab" for="dtabs0s11">Activities</label>
+<label class="tlab ac" for="dtabs0s11">Activities</label>
 </div>
 <div class="panes">
 <section class="pane p0dtabs0s1"><ul class="evn">
@@ -604,7 +607,7 @@ ul.eve,ul.evl{display:none}
 <input type="radio" name="dtabs0s2" id="dtabs0s21">
 <div class="tabbar">
 <label class="tlab st" for="dtabs0s20">Storytimes</label>
-<label class="tlab" for="dtabs0s21">Activities</label>
+<label class="tlab ac" for="dtabs0s21">Activities</label>
 </div>
 <div class="panes">
 <section class="pane p0dtabs0s2"><ul class="evn">
@@ -659,7 +662,7 @@ ul.eve,ul.evl{display:none}
 <input type="radio" name="dtabs0s3" id="dtabs0s31">
 <div class="tabbar">
 <label class="tlab st" for="dtabs0s30">Storytimes</label>
-<label class="tlab" for="dtabs0s31">Activities</label>
+<label class="tlab ac" for="dtabs0s31">Activities</label>
 </div>
 <div class="panes">
 <section class="pane p0dtabs0s3"><ul>
@@ -692,7 +695,7 @@ ul.eve,ul.evl{display:none}
 <input type="radio" name="dtabs1s0" id="dtabs1s01">
 <div class="tabbar">
 <label class="tlab st" for="dtabs1s00">Storytimes</label>
-<label class="tlab" for="dtabs1s01">Activities</label>
+<label class="tlab ac" for="dtabs1s01">Activities</label>
 </div>
 <div class="panes">
 <section class="pane p0dtabs1s0"><ul class="evn">
@@ -900,7 +903,7 @@ ul.eve,ul.evl{display:none}
 <input type="radio" name="dtabs1s1" id="dtabs1s11">
 <div class="tabbar">
 <label class="tlab st" for="dtabs1s10">Storytimes</label>
-<label class="tlab" for="dtabs1s11">Activities</label>
+<label class="tlab ac" for="dtabs1s11">Activities</label>
 </div>
 <div class="panes">
 <section class="pane p0dtabs1s1"><ul class="evn">
@@ -958,7 +961,7 @@ ul.eve,ul.evl{display:none}
 <input type="radio" name="dtabs1s2" id="dtabs1s21">
 <div class="tabbar">
 <label class="tlab st" for="dtabs1s20">Storytimes</label>
-<label class="tlab" for="dtabs1s21">Activities</label>
+<label class="tlab ac" for="dtabs1s21">Activities</label>
 </div>
 <div class="panes">
 <section class="pane p0dtabs1s2"><ul class="evn">
@@ -990,7 +993,7 @@ ul.eve,ul.evl{display:none}
 </div></section>
 <section class="pane p3dtabs1"><input type="radio" name="dtabs1s3" id="dtabs1s30" checked>
 <div class="tabbar">
-<label class="tlab" for="dtabs1s30">Activities</label>
+<label class="tlab ac" for="dtabs1s30">Activities</label>
 </div>
 <div class="panes">
 <section class="pane p0dtabs1s3"><ul>
@@ -1024,7 +1027,7 @@ ul.eve,ul.evl{display:none}
 <input type="radio" name="dtabs2s0" id="dtabs2s01">
 <div class="tabbar">
 <label class="tlab st" for="dtabs2s00">Storytimes</label>
-<label class="tlab" for="dtabs2s01">Activities</label>
+<label class="tlab ac" for="dtabs2s01">Activities</label>
 </div>
 <div class="panes">
 <section class="pane p0dtabs2s0"><ul class="evn">
@@ -1100,7 +1103,7 @@ ul.eve,ul.evl{display:none}
 <input type="radio" name="dtabs2s1" id="dtabs2s11">
 <div class="tabbar">
 <label class="tlab st" for="dtabs2s10">Storytimes</label>
-<label class="tlab" for="dtabs2s11">Activities</label>
+<label class="tlab ac" for="dtabs2s11">Activities</label>
 </div>
 <div class="panes">
 <section class="pane p0dtabs2s1"><ul class="evn">
@@ -1178,7 +1181,7 @@ ul.eve,ul.evl{display:none}
 </div></section>
 <section class="pane p3dtabs2"><input type="radio" name="dtabs2s3" id="dtabs2s30" checked>
 <div class="tabbar">
-<label class="tlab" for="dtabs2s30">Activities</label>
+<label class="tlab ac" for="dtabs2s30">Activities</label>
 </div>
 <div class="panes">
 <section class="pane p0dtabs2s3"><ul>
@@ -1203,7 +1206,7 @@ ul.eve,ul.evl{display:none}
 <input type="radio" name="dtabs3s0" id="dtabs3s01">
 <div class="tabbar">
 <label class="tlab st" for="dtabs3s00">Storytimes</label>
-<label class="tlab" for="dtabs3s01">Activities</label>
+<label class="tlab ac" for="dtabs3s01">Activities</label>
 </div>
 <div class="panes">
 <section class="pane p0dtabs3s0"><ul class="evn">
@@ -1363,7 +1366,7 @@ ul.eve,ul.evl{display:none}
 <input type="radio" name="dtabs3s1" id="dtabs3s11">
 <div class="tabbar">
 <label class="tlab st" for="dtabs3s10">Storytimes</label>
-<label class="tlab" for="dtabs3s11">Activities</label>
+<label class="tlab ac" for="dtabs3s11">Activities</label>
 </div>
 <div class="panes">
 <section class="pane p0dtabs3s1"><ul class="evn">
@@ -1456,7 +1459,7 @@ ul.eve,ul.evl{display:none}
 <input type="radio" name="dtabs4s1" id="dtabs4s11">
 <div class="tabbar">
 <label class="tlab st" for="dtabs4s10">Storytimes</label>
-<label class="tlab" for="dtabs4s11">Activities</label>
+<label class="tlab ac" for="dtabs4s11">Activities</label>
 </div>
 <div class="panes">
 <section class="pane p0dtabs4s1"><ul class="evn">
@@ -1530,7 +1533,7 @@ ul.eve,ul.evl{display:none}
 </div></section>
 <section class="pane p2dtabs4"><input type="radio" name="dtabs4s2" id="dtabs4s20" checked>
 <div class="tabbar">
-<label class="tlab" for="dtabs4s20">Activities</label>
+<label class="tlab ac" for="dtabs4s20">Activities</label>
 </div>
 <div class="panes">
 <section class="pane p0dtabs4s2"><ul>
@@ -1561,7 +1564,7 @@ ul.eve,ul.evl{display:none}
 <input type="radio" name="dtabs5s0" id="dtabs5s01">
 <div class="tabbar">
 <label class="tlab st" for="dtabs5s00">Storytimes</label>
-<label class="tlab" for="dtabs5s01">Activities</label>
+<label class="tlab ac" for="dtabs5s01">Activities</label>
 </div>
 <div class="panes">
 <section class="pane p0dtabs5s0"><ul class="evn">
@@ -1628,7 +1631,7 @@ ul.eve,ul.evl{display:none}
 <input type="radio" name="dtabs5s1" id="dtabs5s11">
 <div class="tabbar">
 <label class="tlab st" for="dtabs5s10">Storytimes</label>
-<label class="tlab" for="dtabs5s11">Activities</label>
+<label class="tlab ac" for="dtabs5s11">Activities</label>
 </div>
 <div class="panes">
 <section class="pane p0dtabs5s1"><ul class="evn">
@@ -1689,7 +1692,7 @@ ul.eve,ul.evl{display:none}
 <input type="radio" name="dtabs5s2" id="dtabs5s21">
 <div class="tabbar">
 <label class="tlab st" for="dtabs5s20">Storytimes</label>
-<label class="tlab" for="dtabs5s21">Activities</label>
+<label class="tlab ac" for="dtabs5s21">Activities</label>
 </div>
 <div class="panes">
 <section class="pane p0dtabs5s2"><ul class="evn">
@@ -1727,7 +1730,7 @@ ul.eve,ul.evl{display:none}
 </div></section>
 <section class="pane p3dtabs5"><input type="radio" name="dtabs5s3" id="dtabs5s30" checked>
 <div class="tabbar">
-<label class="tlab" for="dtabs5s30">Activities</label>
+<label class="tlab ac" for="dtabs5s30">Activities</label>
 </div>
 <div class="panes">
 <section class="pane p0dtabs5s3"><ul>
@@ -1759,7 +1762,7 @@ ul.eve,ul.evl{display:none}
 <input type="radio" name="dtabs6s0" id="dtabs6s01">
 <div class="tabbar">
 <label class="tlab st" for="dtabs6s00">Storytimes</label>
-<label class="tlab" for="dtabs6s01">Activities</label>
+<label class="tlab ac" for="dtabs6s01">Activities</label>
 </div>
 <div class="panes">
 <section class="pane p0dtabs6s0"><ul class="evn">
@@ -1961,7 +1964,7 @@ ul.eve,ul.evl{display:none}
 <input type="radio" name="dtabs6s1" id="dtabs6s11">
 <div class="tabbar">
 <label class="tlab st" for="dtabs6s10">Storytimes</label>
-<label class="tlab" for="dtabs6s11">Activities</label>
+<label class="tlab ac" for="dtabs6s11">Activities</label>
 </div>
 <div class="panes">
 <section class="pane p0dtabs6s1"><ul class="evn">
@@ -2049,7 +2052,7 @@ ul.eve,ul.evl{display:none}
 <input type="radio" name="dtabs6s2" id="dtabs6s21">
 <div class="tabbar">
 <label class="tlab st" for="dtabs6s20">Storytimes</label>
-<label class="tlab" for="dtabs6s21">Activities</label>
+<label class="tlab ac" for="dtabs6s21">Activities</label>
 </div>
 <div class="panes">
 <section class="pane p0dtabs6s2"><ul class="evn">
@@ -2084,7 +2087,7 @@ ul.eve,ul.evl{display:none}
 </div></section>
 <section class="pane p3dtabs6"><input type="radio" name="dtabs6s3" id="dtabs6s30" checked>
 <div class="tabbar">
-<label class="tlab" for="dtabs6s30">Activities</label>
+<label class="tlab ac" for="dtabs6s30">Activities</label>
 </div>
 <div class="panes">
 <section class="pane p0dtabs6s3"><ul>
