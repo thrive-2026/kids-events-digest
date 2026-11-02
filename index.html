@@ -19,7 +19,7 @@ ul{padding-left:1.2em}li{margin-bottom:6px}
 hr{border:none;border-top:1px solid var(--border);margin:1.5em 0}
 a{color:var(--link)}
 input[name^="dtab"]{display:none}
-.tabbar{position:sticky;top:0;background:var(--bg);padding:10px 0 8px;display:flex;gap:6px;overflow-x:auto;z-index:5;border-bottom:1px solid var(--border);margin-bottom:4px}
+.tabbar{position:sticky;top:54px;background:var(--bg);padding:10px 0 8px;display:flex;gap:6px;overflow-x:auto;z-index:5;border-bottom:1px solid var(--border);margin-bottom:4px}
 .subbar{display:flex;gap:6px;overflow-x:auto;padding:6px 0;margin-bottom:2px}
 .tlab{flex:0 0 auto;padding:7px 12px;border:1px solid var(--border);border-radius:999px;background:var(--pill);color:var(--fg);font-size:.85em;cursor:pointer;white-space:nowrap}
 .subbar .tlab{font-size:.78em;padding:5px 10px}
@@ -205,6 +205,13 @@ ul.eve,ul.evl{display:none}
 #gsorte:checked ~ .panes .sortseg label[for="gsorte"]{background:var(--tab-active-bg);color:var(--tab-active-fg);border-color:var(--tab-active-bg)}
 #gsortn:checked ~ .panes .sortseg label[for="gsortn"]{background:var(--tab-active-bg);color:var(--tab-active-fg);border-color:var(--tab-active-bg)}
 #gsortl:checked ~ .panes .sortseg label[for="gsortl"]{background:var(--tab-active-bg);color:var(--tab-active-fg);border-color:var(--tab-active-bg)}
+
+.searchwrap{position:sticky;top:0;z-index:10;background:var(--bg);padding:10px 0 8px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.searchwrap input{flex:1 1 220px;padding:8px 12px;border:1px solid var(--border);border-radius:999px;font-size:.95em;background:var(--bg);color:var(--fg)}
+.searchwrap button{padding:7px 12px;border:1px solid var(--border);border-radius:999px;background:var(--pill);color:var(--fg);cursor:pointer;font-size:.85em}
+#dsearch-count{font-size:.85em;opacity:.75;white-space:nowrap}
+#dsearch-results h3{margin-top:1em}
+
 </style></head><body>
 <h1>Kids' Events Digest — Fri Oct 30 → Thu Nov 5, 2026 (ages under 7)</h1>
 <details class="about"><summary>About this digest</summary>
@@ -220,6 +227,7 @@ ul.eve,ul.evl{display:none}
 <li><strong>Heads-ups:</strong> <strong>Hayward:</strong> free tickets from the Children's desk 30 min before every storytime, for every adult AND child; Hayward is closed Sun–Mon, so no Hayward events Sun 11/1 or Mon 11/2 (closure confirmed on the city's hours page). <strong>Berkeley: LATE OPENING Fri Oct 30, 10:00–11:00 AM (NOT a closure)</strong> — Central, Claremont, North, THP South, Tool Lending Library, and West open late (late-opening notices on this run's Fri calendar; hours verified in the prior run covering the same day). <strong>Berkeley cancellations this run:</strong> Central Family Storytime Sat 10/31 CANCELLED; Stay &amp; Play @North Wed 11/4 CANCELLED — neither is listed as held. <strong>SCPL cancellations:</strong> Downtown Storytime and Stay &amp; Play Mon 11/2 CANCELLED; Felton Make &amp; Explore: Gnomevember! Thu 11/5 CANCELLED (also school-age). <strong>Pleasanton closed Fri Oct 30</strong> (Building Maintenance / Staff Development) — no Pleasanton events Fri 10/30; Sat 10/31 genuinely empty (library open 9–5); Sun 11/1 closed. <strong>San Mateo City:</strong> Fri 10/30 and Sat 10/31 genuinely empty (calendar states "No events are scheduled") — only 2 San Mateo City items in-window. <strong>Sunnyvale storytimes mostly BACK</strong> — only Sat 10/31 Family Storytime ON BREAK (excluded). <strong>SCCLD Gilroy / Morgan Hill excluded</strong> as beyond 40 mi (47 feed items). <strong>Orinda:</strong> storytime break until ~Nov 18 (only Toddler Yoga Wed 11/4 kept); <strong>Moraga storytime back</strong> Wed 11/4. <strong>Ygnacio Valley</strong> closed through May 2027; <strong>Kensington</strong> closed for remodel. <strong>CCCL branches closed Sundays.</strong> <strong>Santa Clara City Northside Branch:</strong> no under-7 events in-window (next: Family Storytime Fri 11/6). <strong>Children's Fairyland CLOSED Mon 11/2 &amp; Tue 11/3</strong> (regular Mon/Tue closure); Sat 10/31 Mad Magic 12:00–7:00 PM replaces regular hours. <strong>Lindsay Wildlife closed Mon/Tue.</strong> <strong>Candle Lighters Ghost House season ends Fri Oct 30 (last night)</strong> — no Ghost House Sat 10/31. <strong>CuriOdyssey:</strong> summer hours 10–5 through Sun Nov 1 (Sat 10/31 open 10–5 continuous — the prior run's hours conflict is resolved); winter hours 9:30–4:30 start Mon Nov 2.</li>
 </ul></div>
 </details>
+<div class="searchwrap" role="search"><input id="dsearch" type="search" aria-label="Search this digest" placeholder="Search events, places, words… e.g. Halloween, music, Fremont" autocomplete="off"><button id="dsearch-clear" type="button" hidden>Clear</button><span id="dsearch-count" aria-live="polite"></span></div><div id="dsearch-results" hidden></div>
 <div class="tabs">
 <input type="radio" name="dtab" id="dtab0" checked>
 <input type="radio" name="dtab" id="dtab1">
@@ -3366,4 +3374,61 @@ ul.eve,ul.evl{display:none}
 </div></section>
 </div>
 </div>
+<script>
+(function(){
+var input=document.getElementById('dsearch'); if(!input) return;
+var clearBtn=document.getElementById('dsearch-clear');
+var count=document.getElementById('dsearch-count');
+var results=document.getElementById('dsearch-results');
+var tabs=document.querySelector('.tabs'); if(!tabs) return;
+var index=null;
+function buildIndex(){
+ index=[];
+ var panes=document.querySelectorAll('.tabs > .panes > section.pane');
+ panes.forEach(function(pane,i){
+  var lab=document.querySelector('label[for="dtab'+i+'"]');
+  var day=lab?lab.textContent.trim():'Day';
+  if(day==='Notes') return;
+  var uls=pane.querySelectorAll('ul');
+  uls.forEach(function(ul){
+   if(ul.classList.contains('eve')||ul.classList.contains('evl')) return;
+   ul.querySelectorAll(':scope > li').forEach(function(li){
+    index.push({day:day, html:li.outerHTML, text:li.textContent.toLowerCase()});
+   });
+  });
+ });
+}
+function showAll(){
+ results.hidden=true; results.innerHTML='';
+ tabs.style.display='';
+ count.textContent=''; clearBtn.hidden=true;
+}
+function esc(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function run(){
+ var q=input.value.trim().toLowerCase();
+ if(q.length<2){ showAll(); return; }
+ if(!index) buildIndex();
+ var terms=q.split(/\s+/);
+ var matches=index.filter(function(it){ return terms.every(function(t){ return it.text.indexOf(t)!==-1; }); });
+ var days=[]; var byDay={};
+ matches.forEach(function(m){ if(!byDay[m.day]){ byDay[m.day]=[]; days.push(m.day);} byDay[m.day].push(m); });
+ var html='';
+ if(!matches.length){
+  html='<p class="empty">No matches for &ldquo;'+esc(input.value.trim())+'&rdquo;. Try a shorter word, a place, or a different day.</p>';
+ } else {
+  days.forEach(function(d){
+   html+='<h3>'+esc(d)+' ('+byDay[d].length+')</h3><ul>'+byDay[d].map(function(m){return m.html;}).join('')+'</ul>';
+  });
+ }
+ results.innerHTML=html;
+ results.hidden=false;
+ tabs.style.display='none';
+ count.textContent=matches.length+(matches.length===1?' match':' matches');
+ clearBtn.hidden=false;
+}
+input.addEventListener('input',run);
+clearBtn.addEventListener('click',function(){ input.value=''; showAll(); input.focus(); });
+input.addEventListener('keydown',function(e){ if(e.key==='Escape'){ input.value=''; showAll(); } });
+})();
+</script>
 </body></html>
