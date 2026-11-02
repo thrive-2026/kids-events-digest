@@ -3460,10 +3460,10 @@ var dist=data.dist||{};
 var chips=Array.prototype.slice.call(document.querySelectorAll('.citychip'));
 if(!chips.length) return;
 var KEY='digest-origin-94560';
-var origin=0;
-try{ var saved=window.localStorage && localStorage.getItem(KEY);
-  if(saved!==null){ var n=parseInt(saved,10);
-    if(!isNaN(n)&&n>=0&&n<chips.length) origin=n; } }catch(e){}
+function loadOrigin(){ try{ if(window.localStorage){ var s=localStorage.getItem(KEY); if(s!==null) return parseInt(s,10); } }catch(e){} return 0; }
+function saveOrigin(v){ try{ if(window.localStorage) localStorage.setItem(KEY,String(v)); }catch(e){} }
+var origin=loadOrigin();
+if(isNaN(origin)||origin<0||origin>=chips.length) origin=0;
 window.__digestOrigin=origin;
 window.__digestDist=dist;
 var origOrder=[];
@@ -3488,7 +3488,7 @@ function applyOrigin(){
   chips.forEach(function(c,i){
     c.classList.toggle('on',i===origin);
     c.setAttribute('aria-pressed',i===origin?'true':'false'); });
-  try{ if(window.localStorage) localStorage.setItem(KEY,String(origin)); }catch(e){}
+  saveOrigin(origin);
   var lists=document.querySelectorAll('.tabs .panes ul');
   lists.forEach(function(ul){
     var items=Array.prototype.slice.call(ul.children);
